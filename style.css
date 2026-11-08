@@ -1,0 +1,399 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------
+   自前フォント（おやつポッケフォント）の読み込み設定
+-------------------------------------------------- */
+@font-face {
+  font-family: 'Oyatsupokkefont';
+  src: url('oyatsupokkefont/oyatsupokke.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* --------------------------------------------------
+   Reset & Variables
+-------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --card-bg: #ffffff;
+  --text-color: #2b2b2b;
+  --line-color: #e2ded7;
+  --font-base: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  --font-title: 'Ribeye', cursive;
+  --font-sub: 'Oyatsupokkefont', cursive, sans-serif;
+}
+
+body {
+  font-family: var(--font-base);
+  color: var(--text-color);
+  background-image: url('img/red\ checked.jpg');
+  background-repeat: repeat;
+  background-size: 100vw auto;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 60px 0;
+}
+
+/* --------------------------------------------------
+   Section Titles
+-------------------------------------------------- */
+.section-title {
+  font-family: var(--font-title);
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  color: #f9ba33;
+  text-shadow: 
+    -2px -2px 0 #fff,  2px -2px 0 #fff,
+    -2px  2px 0 #fff,  2px  2px 0 #fff,
+    0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------
+   1. First View
+-------------------------------------------------- */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+.hero-frame {
+  position: relative;
+  width: 96vw;
+  height: 85vh;
+  max-width: 900px;
+  max-height: 800px;
+  margin: 0 auto;
+  
+  clip-path: url(#handDrawnMask);
+  -webkit-clip-path: url(#handDrawnMask);
+  
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-txt-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; 
+  text-align: center;
+  color: #ff91ae;
+  padding: 0 20px 60px 20px;
+  pointer-events: none;
+}
+
+.hero-catch {
+  font-family: var(--font-title);
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  text-shadow: 
+    -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px  1px 0 #000, 1px  1px 0 #000,
+    0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.3rem, 10vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  text-shadow: 
+    -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px  2px 0 #000, 2px  2px 0 #000,
+    0 6px 25px rgba(0, 0, 0, 0.9);
+}
+
+.hero-date {
+  font-size: clamp(0.95rem, 3vw, 1.2rem);
+  letter-spacing: 0.12em;
+  opacity: 0.95;
+  text-shadow: 
+    -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px  1px 0 #000, 1px  1px 0 #000,
+    0 3px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* --------------------------------------------------
+   2. Message
+-------------------------------------------------- */
+.message-letter-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.message-bg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.3));
+}
+
+.message-text-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15% 12%;
+  font-family: var(--font-sub);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 2.2;
+  color: #2b2b2b;
+}
+
+/* --------------------------------------------------
+   3. Timeline
+-------------------------------------------------- */
+.timeline-list {
+  position: relative;
+  padding-left: 20px;
+}
+
+.timeline-list::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 7px;
+  width: 3px;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 25px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -19px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text-color);
+  border: 3px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-date {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+  font-family: var(--font-sub) !important;
+  text-shadow: 
+    -1px -1px 0 #2b2b2b, 1px -1px 0 #2b2b2b,
+    -1px  1px 0 #2b2b2b, 1px  1px 0 #2b2b2b,
+    0 3px 8px rgba(0,0,0,0.6);
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  font-family: var(--font-sub) !important;
+}
+
+/* 縦横比を保って個別サイズで自然に表示する設定 ＋ 角丸 ＋ 濃い影 */
+.timeline-img-wrap {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+.timeline-img-wrap img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  display: block;
+}
+
+/* H3タグ（イベント名など）に確実にフォントを適用 */
+h3.timeline-title,
+.timeline-title {
+  font-family: var(--font-sub) !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px;
+  color: #2b2b2b !important;
+}
+
+.timeline-desc {
+  font-family: var(--font-sub) !important;
+  font-size: 1.5rem !important;
+  color: #555 !important;
+}
+
+/* --------------------------------------------------
+   4. Video Messages
+-------------------------------------------------- */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.video-card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video-wrapper video,
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.video-sender {
+  font-family: var(--font-sub);
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+  color: #444;
+}
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-family: var(--font-sub);
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* --------------------------------------------------
+   Responsive Media Queries
+-------------------------------------------------- */
+
+@media (min-width: 600px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 90px 0;
+  }
+
+  .hero-frame {
+    width: 88vw;
+    height: 88vh;
+  }
+
+  .timeline-list {
+    padding-left: 0;
+  }
+
+  .timeline-list::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    width: 50%;
+    padding-left: 0;
+    margin-bottom: 50px;
+  }
+
+  .timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 40px;
+    text-align: right;
+  }
+
+  .timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 40px;
+    text-align: left;
+  }
+
+  .timeline-item:nth-child(odd)::before {
+    left: auto;
+    right: -7px;
+  }
+
+  .timeline-item:nth-child(even)::before {
+    left: -7px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}
